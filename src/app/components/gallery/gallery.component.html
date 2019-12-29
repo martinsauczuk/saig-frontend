@@ -1,0 +1,9 @@
+<div>
+
+    <div *ngFor="let img of imagenes">
+        <img class="sidebar-img" [src]="'http://localhost:3000/uploads/' + img.filename">
+        <button type="button" class="btn btn-outline-danger" (click)="eliminarImagen(img._id)">Eliminar imagen</button>
+    </div>
+
+
+</div>
