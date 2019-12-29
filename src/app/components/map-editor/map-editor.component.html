@@ -1,0 +1,36 @@
+<div class="main-container">
+
+	<div class="sidebar" *ngIf="this.objetivoSeleccionado">
+		<div class="sidebar-content" >
+
+			<div class="card">
+				<div class="card-header">
+					<h6>{{ this.objetivoSeleccionado._id }}</h6>
+				</div>
+			</div>
+
+			<br>
+			<br>
+
+			<div class="scroll-list">
+				<button type="button" class="btn btn-outline-danger" (click)="eliminarObjetivoSeleccionado()">Eliminar
+					objetivo</button>
+				<!-- <pre>{{ this.objetivoSeleccionado | json }}</pre> -->
+			
+				<div *ngFor="let img of objetivoSeleccionado.imagenes">
+					<img class="sidebar-img" [src]="'http://localhost:3000/uploads/' + img.filename">
+					<button type="button" class="btn btn-outline-danger" (click)="eliminarImagen(img._id)">Eliminar imagen</button>
+				</div>
+			
+			</div>
+		</div>
+	</div>
+
+	<div class="map" leaflet leafletDraw
+		[leafletOptions]="leafletOptions"
+		[leafletLayersControl]="layersControl"
+		[leafletDrawOptions]="drawOptions" 
+		(leafletDrawCreated)="onDrawCreated($event)"
+		(leafletClick)="clickOnMap($event)">
+	</div>
+</div>
